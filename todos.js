@@ -19,10 +19,10 @@ class TodoManager {
         data: { title, description, status },
       });
 
-      console.log(chalk.green("Task added successfully!"));
+      console.log(chalk.green("Congratulations. You have added a new task."));
       console.log(newTodo);
     } catch (error) {
-      console.error(chalk.red("Error adding task:"), error.message);
+      console.error(chalk.red("Error! Task not added:"), error.message);
     }
   }
 
@@ -39,10 +39,10 @@ class TodoManager {
         data: { title, description, status },
       });
 
-      console.log(chalk.blue("Task updated successfully!"));
+      console.log(chalk.blue("Task update successfull!"));
       console.log(updatedTodo);
     } catch (error) {
-      console.error(chalk.red("Error updating task:"), error.message);
+      console.error(chalk.red("Error! Task not updated:"), error.message);
     }
   }
 
@@ -58,7 +58,7 @@ class TodoManager {
       } else {
         const todos = await prisma.todo.findMany();
         if (todos.length === 0) {
-          console.log(chalk.yellow("No tasks available."));
+          console.log(chalk.yellow("No tasks here. Please add."));
           return;
         }
         console.log(todos);

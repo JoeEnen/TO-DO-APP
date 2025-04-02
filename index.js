@@ -23,9 +23,11 @@ program
   .option("-d, --description <description>", "New description")
   .option("-s, --status <status>", "New status (todo, inprogress, complete)")
   .action((options) => {
+
     TodoManager.updateTodo({
       id: parseInt(options.id),
       title: options.title,
+
       description: options.description,
       status: options.status,
     });
@@ -36,10 +38,13 @@ program
   .description("Read all todos or a specific one")
   .option("-i, --id <id>", "ID of the todo")
   .action((options) => {
+
     TodoManager.readTodos({
       id: options.id ? parseInt(options.id) : null,
     });
   });
+
+
 
 program
   .command("delete")
@@ -49,6 +54,7 @@ program
     TodoManager.deleteTodo({ id: parseInt(options.id) });
   });
 
+
 program
   .command("delete-all")
   .description("Delete all todos (requires confirmation)")
@@ -56,4 +62,7 @@ program
     TodoManager.deleteAllTodos();
   });
 
+
+
+  
 program.parse(process.argv);
